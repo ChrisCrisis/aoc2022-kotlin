@@ -23,10 +23,10 @@ fun main() {
         return data.findUniqueCharPacket(MESSAGE_MARKER_SIZE)
     }
 
-    val testInput = parseInputText("Day06_test")
+    val testInput = readInputText("Day06_test")
     println(part1(testInput))
 
-    val input = parseInputText("Day06")
+    val input = readInputText("Day06")
     println(part1(input))
     println(part2(input))
 }

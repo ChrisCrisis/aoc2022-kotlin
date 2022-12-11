@@ -8,7 +8,7 @@ import java.security.MessageDigest
 fun readInput(name: String) = File("src", "$name.txt")
     .readLines()
 
-fun parseInputText(name: String) = File("src", "$name.txt")
+fun readInputText(name: String) = File("src", "$name.txt")
     .readText()
 
 /**
