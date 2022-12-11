@@ -1,11 +1,6 @@
-import java.io.File
-
 const val SEARCH_WINDOW_SIZE = 4
 const val MESSAGE_MARKER_SIZE = 14
 fun main() {
-    fun parseInputToData(path: String): String{
-        return File(path).readText()
-    }
 
     fun String.hasOnlyUniqueCharacters(): Boolean {
         return this.all {letter ->
@@ -28,10 +23,10 @@ fun main() {
         return data.findUniqueCharPacket(MESSAGE_MARKER_SIZE)
     }
 
-    val testInput = parseInputToData("src/Day06_test.txt")
+    val testInput = parseInputText("Day06_test")
     println(part1(testInput))
 
-    val input = parseInputToData("src/Day06.txt")
+    val input = parseInputText("Day06")
     println(part1(input))
     println(part2(input))
 }
