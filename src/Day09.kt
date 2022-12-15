@@ -5,7 +5,7 @@ import kotlin.math.abs
 data class Node<T>(var value: T, val next: Node<T>? = null) {
     override fun toString(): String {
         return if (next != null) {
-            "$value -> ${next.toString()}"
+            "$value -> $next"
         } else {
             "$value"
         }
@@ -47,7 +47,7 @@ data class Rope(
         val head: Node<Position>,
         private val visitedPositions: HashSet<Position> = hashSetOf(Position()),
 ){
-    fun Node<Position>.moveNodeTo(myNewPosition: Position): Node<Position>{
+    private fun Node<Position>.moveNodeTo(myNewPosition: Position): Node<Position>{
         val nextPosition = this.next?.let { nextNode ->
             if (!myNewPosition.isAdjacentTo(nextNode.value)) {
                 nextNode.moveNodeTo(this.value)
@@ -69,7 +69,7 @@ data class Rope(
         }
     }
 
-    fun moveBy(move: Movement): Rope {
+    private fun moveBy(move: Movement): Rope {
         var newHead = this.head
         (0 until move.distance).forEach { _ ->
             val headPosAfterMove = newHead.value.calcPositionAfter(move)
@@ -88,6 +88,7 @@ data class Rope(
         }
     }
 }
+
 fun main() {
 
     fun parseData(data: String): List<Movement> {
