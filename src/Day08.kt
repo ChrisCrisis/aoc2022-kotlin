@@ -1,3 +1,5 @@
+import template.DailyChallenge
+
 class TreeGrid(
     private val trees: Array<Array<Tree>>
 ){
@@ -85,9 +87,8 @@ class TreeGrid(
     }
 }
 
-fun main() {
-
-    fun parseData(data: String): TreeGrid {
+class Day08 : DailyChallenge<TreeGrid,Int>(){
+    override fun parseInput(data: String): TreeGrid {
         val lines = data.split("\n")
         val lineArray = lines.mapIndexed { y, line ->
             line.mapIndexed { x, treeHeight ->
@@ -101,22 +102,11 @@ fun main() {
         return TreeGrid(lineArray)
     }
 
-    fun part1(data: TreeGrid): Int {
-        return data.getTreesVisibleFromOutside()
+    override fun part1(input: TreeGrid): Int {
+        return input.getTreesVisibleFromOutside()
     }
 
-    fun part2(data: TreeGrid): Int {
-        return data.getHighestScore()
+    override fun part2(input: TreeGrid): Int {
+        return input.getHighestScore()
     }
-
-    val testInput = readInputText("Day08_test")
-    val testTree = parseData(testInput)
-    println(part2(testTree))
-    check(part1(testTree) == 21)
-    check(part2(testTree) == 8)
-
-    val input = readInputText("Day08")
-    val fileTree = parseData(input)
-    println(part1(fileTree))
-    println(part2(fileTree))
 }
