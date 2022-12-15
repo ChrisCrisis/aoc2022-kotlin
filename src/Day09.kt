@@ -47,8 +47,6 @@ data class Rope(
         val head: Node<Position>,
         private val visitedPositions: HashSet<Position> = hashSetOf(Position()),
 ){
-    constructor(head: Position = Position(), tail:Position = Position()): this(Node(head,Node(tail)))
-
     fun Node<Position>.moveNodeTo(myNewPosition: Position): Node<Position>{
         val nextPosition = this.next?.let { nextNode ->
             if (!myNewPosition.isAdjacentTo(nextNode.value)) {
@@ -106,7 +104,7 @@ fun main() {
     }
 
     fun part1(data: List<Movement>): Int {
-        val rope = Rope().applyMoves(data)
+        val rope = Rope.createOfLength(2).applyMoves(data)
         return rope.getPositionsVisitedByTail().size
     }
 
