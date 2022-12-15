@@ -1,4 +1,5 @@
 import template.DailyChallenge
+import template.InputData
 
 class TreeGrid(
     private val trees: Array<Array<Tree>>
@@ -87,7 +88,8 @@ class TreeGrid(
     }
 }
 
-class Day08 : DailyChallenge<TreeGrid,Int>(){
+class Day08(inputData: InputData<Int>):
+        DailyChallenge<TreeGrid,Int>(inputData){
     override fun parseInput(data: String): TreeGrid {
         val lines = data.split("\n")
         val lineArray = lines.mapIndexed { y, line ->

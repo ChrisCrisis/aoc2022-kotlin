@@ -1,15 +1,15 @@
+import template.InputData
+
 fun main(){
-    val day = Day08()
+    val inputFileBaseName = "Day08"
+    val inputData = listOf(
+            InputData.Test("${inputFileBaseName}_test", 21, 8),
+    )
 
-    val part1Test = day.getPart1Result("Day08_test")
-    val part2Test = day.getPart2Result("Day08_test")
-    println(part1Test)
-    check(part1Test == 21)
-    check(part2Test == 8)
+    val ignorePart2 = inputData.any { it.checkValue2 == null }
+    inputData.all {
+        Day08(it).evaluate(!ignorePart2)
+    }
 
-    val part1 = day.getPart1Result("Day08")
-    val part2 = day.getPart2Result("Day08")
-    println(part1)
-    println(part2)
-
+    Day08(InputData.Quest(inputFileBaseName)).evaluate(!ignorePart2)
 }
