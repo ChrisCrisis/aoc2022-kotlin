@@ -3,7 +3,7 @@ import template.InputData
 fun main(){
     val inputFileBaseName = "Day09"
     val inputData = listOf(
-            InputData.Test("${inputFileBaseName}_test", 13, 1),
+//            InputData.Test("${inputFileBaseName}_test", 13, 1),
             InputData.Test("${inputFileBaseName}_test_p2", 88, 36),
     )
 
