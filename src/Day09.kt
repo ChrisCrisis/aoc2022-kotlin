@@ -1,3 +1,4 @@
+import template.DailyChallenge
 import java.lang.IllegalStateException
 import kotlin.math.abs
 
@@ -89,9 +90,9 @@ data class Rope(
     }
 }
 
-fun main() {
+class Day09 (inputData: template.InputData<Int>): DailyChallenge<List<Movement>,Int>(inputData){
 
-    fun parseData(data: String): List<Movement> {
+    override fun parseInput(data: String): List<Movement> {
         return data.split("\n").map {moveData ->
             val split = moveData.split(" ")
             when(split[0]){
@@ -104,29 +105,14 @@ fun main() {
         }
     }
 
-    fun part1(data: List<Movement>): Int {
-        val rope = Rope.createOfLength(2).applyMoves(data)
+    override fun part1(input: List<Movement>): Int {
+        val rope = Rope.createOfLength(2).applyMoves(input)
         return rope.getPositionsVisitedByTail().size
     }
 
-    fun part2(data: List<Movement>): Int {
+    override fun part2(input: List<Movement>): Int {
 
-        val rope = Rope.createOfLength(10).applyMoves(data)
+        val rope = Rope.createOfLength(10).applyMoves(input)
         return rope.getPositionsVisitedByTail().size
     }
-
-    val testInput = readInputText("Day09_test")
-    val testTree = parseData(testInput)
-    println(part1(testTree))
-    check(part1(testTree) == 13)
-
-    val testInputP2 = readInputText("Day09_test_p2")
-    val testTreeP2 = parseData(testInputP2)
-    println(part2(testTreeP2))
-    check(part2(testTreeP2) == 36)
-
-    val input = readInputText("Day09")
-    val fileTree = parseData(input)
-    println(part1(fileTree))
-    println(part2(fileTree))
 }
